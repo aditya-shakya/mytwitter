@@ -1,0 +1,41 @@
+<h1>Profile :  <%=current_user.email %>  </h1>
+
+<%= link_to "Home", home_index_path, method: :get %>
+<h2>Listing Followers </h2>
+ 
+<table>
+    
+    <% @myfollower.each do |follower| %>
+          <tr>
+        <td><%= follower.email %></td>
+      </tr>
+        <% end %>
+</table>
+
+
+<h2>Listing Following </h2>
+ 
+<table>
+    
+    <% @myfollowing.each do |following| %>
+       <tr>
+        <%= following.email %>
+        <%= link_to "Unfollow", unfollow_path(id: following.id), method: :post %>
+
+      </tr>
+        <% end %>
+</table>
+
+
+<h2>Follow more people </h2>
+ 
+<table>
+    
+    <% @notfollowing.each do |user| %>
+       <tr>
+        <%= user.email %>
+        <%= link_to "follow", follow_path(following_id: user.id), method: :post %>
+
+      </tr>
+    <% end %>
+</table>

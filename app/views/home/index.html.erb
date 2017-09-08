@@ -1,0 +1,49 @@
+<% if user_signed_in? %>
+    Logged in as <%= link_to current_user.email , profile_index_path, :class => 'navbar-link' %>.
+    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+
+    <h1>Welcome to fake twitter</h1>
+
+
+
+
+
+    <%= form_for Tweet.create do |f|%>
+
+        <div class="field" >
+          <%= f.text_area :content, autofocus: true %>
+        </div>
+
+
+
+        <div class="actions">
+          <%= f.submit "Tweet away" %>
+        </div>
+    <% end %>
+
+
+
+    <h1>Listing tweets</h1>
+     
+    <table>
+        <tr>
+          <th>author :
+    </th>
+          <th>Tweet</th>
+        </tr>
+       
+        <% @tweets.each do |tweet| %>
+              <tr>
+            <td><%= tweet.name %></td>
+            <td><%= tweet.content %></td>
+          </tr>
+            <% end %>
+    </table>
+
+
+<% else %>
+    <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+<% end %>
+
