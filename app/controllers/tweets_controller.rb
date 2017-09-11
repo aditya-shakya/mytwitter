@@ -35,7 +35,7 @@ class TweetsController < ApplicationController
     #
     # puts(params)
     @tweet = Tweet.new
-    @tweet.name =  current_user.email
+    @tweet.name =  current_user.username
     @tweet.user_id = current_user.id
     @tweet.content = params[:tweet][:content]
     respond_to do |format|

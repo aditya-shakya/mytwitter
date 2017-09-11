@@ -1,8 +1,10 @@
 class ProfileController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @followers = Follower.all
-    @myfollower = @followers.joins("JOIN users where users.id = followers.follower_id AND followers.following_id =" + current_user.id.to_s ).select("email")
-    @myfollowing = @followers.joins("JOIN users where users.id = followers.following_id AND followers.follower_id =" + current_user.id.to_s ).select("email, follower_id, following_id , followers.id")
+    @myfollower = @followers.joins("JOIN users where users.id = followers.follower_id AND followers.following_id =" + current_user.id.to_s ).select("username")
+    @myfollowing = @followers.joins("JOIN users where users.id = followers.following_id AND followers.follower_id =" + current_user.id.to_s ).select("username, follower_id, following_id , followers.id")
     # puts(@myfollowing.inspect)
     @except =@myfollowing.pluck(:following_id) + [current_user.id]
     puts ( "here " + @except.to_s)

@@ -7,7 +7,7 @@
     
     <% @myfollower.each do |follower| %>
           <tr>
-        <td><%= follower.email %></td>
+        <td><%= follower.username %></td> <br>
       </tr>
         <% end %>
 </table>
@@ -18,11 +18,13 @@
 <table>
     
     <% @myfollowing.each do |following| %>
-       <tr>
+      <br> 
+      <tr>
         <%= following.email %>
         <%= link_to "Unfollow", unfollow_path(id: following.id), method: :post %>
 
       </tr>
+      <br>
         <% end %>
 </table>
 
@@ -32,10 +34,12 @@
 <table>
     
     <% @notfollowing.each do |user| %>
+      <br>
        <tr>
-        <%= user.email %>
+        <%= user.username %>
         <%= link_to "follow", follow_path(following_id: user.id), method: :post %>
 
       </tr>
+      <br>
     <% end %>
 </table>
