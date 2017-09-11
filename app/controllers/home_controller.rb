@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   # require 'Tweet'
+  before_action :authenticate_user!
+
   def index
     if(current_user)
       @user = User.find_by_id(current_user.id)
