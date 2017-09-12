@@ -20,7 +20,7 @@
     <% @myfollowing.each do |following| %>
       <br> 
       <tr>
-        <%= following.email %>
+        <%= following.username %>
         <%= link_to "Unfollow", unfollow_path(id: following.id), method: :post %>
 
       </tr>

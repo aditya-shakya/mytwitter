@@ -19,7 +19,7 @@ class ProfileController < ApplicationController
       @follow.following_id = params[:following_id]
       @follow.save
       respond_to do |format|
-        format.html { redirect_to profile_index_path, notice: 'unfollow was successfully done.' }
+        format.html { redirect_to profile_index_path, notice: 'follow was successfully done.' }
         format.json { head :no_content }
       end
 
